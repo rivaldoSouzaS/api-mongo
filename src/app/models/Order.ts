@@ -2,7 +2,7 @@ import { model, Schema } from 'mongoose';
 
 export const Order = model('Order', new Schema({
 	table: {
-		tepy: String,
+		type: String,
 		enum: ['WAITING', 'IN_PRODUCTION', 'DONE'],
 		default: 'WAITING'
 	},
@@ -16,11 +16,11 @@ export const Order = model('Order', new Schema({
 			product: {
 				type: Schema.Types.ObjectId,
 				required: true,
-				ref: 'Product'
+				ref: 'Product',
 			},
 			quantity: {
 				type: Number,
-				default: 1
+				default: 1,
 			}
 		}]
 	}
