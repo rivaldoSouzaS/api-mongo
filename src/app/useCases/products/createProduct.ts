@@ -3,8 +3,19 @@ import { Request, Response } from 'express';
 
 export async function createProduct(req: Request, res:Response){
 	try {
-		console.log(req.body);
+		const imagePath = req.file?.fieldname;
+		const { name, description, price, category, ingredients } = req.body;
 
+		const product = await Product.create({
+			name,
+			description,
+			imagePath,
+			price: Number(price),
+			category,
+			ingredients: JSON.parse(ingredients),
+		});
+
+		res.status(201).json(Product);
 	} catch (error) {
 		console.log(error);
 		res.sendStatus(500);
