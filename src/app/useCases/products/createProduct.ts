@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 export async function createProduct(req: Request, res:Response){
 	try {
-		const imagePath = req.file?.fieldname;
+		const imagePath = req.file?.filename;
 
 		const { name, description, price, category, ingredients } = req.body;
 
@@ -13,7 +13,7 @@ export async function createProduct(req: Request, res:Response){
 			imagePath,
 			price: Number(price),
 			category,
-			ingredients: JSON.parse(ingredients),
+			ingredients: ingredients ? JSON.parse(ingredients) : [],
 		});
 
 		res.status(201).json(product);
