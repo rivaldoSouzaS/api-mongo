@@ -8,6 +8,8 @@ import { listProducts } from './app/useCases/products/listProducts';
 import { createProduct } from './app/useCases/products/createProduct';
 import { deleteProduct } from './app/useCases/products/deleteProduct';
 import { listProductsByCategory } from './app/useCases/products/listProductsByCategory';
+import { createOrder } from './app/useCases/orders/createOrder';
+import { listOrders } from './app/useCases/orders/listOrders';
 export const router = Router();
 
 const upload = multer({
@@ -33,13 +35,9 @@ router.delete('/products/:productId', deleteProduct);
 
 router.get('/products/categories/:categoryId', listProductsByCategory);
 
-router.get('/orders', (req, res) => {
-	res.send('ok');
-});
+router.get('/orders', listOrders);
 
-router.post('/orders', (req, res) => {
-	res.send('ok');
-});
+router.post('/orders', createOrder);
 
 router.patch('/orders/:orderId', (req, res) => {
 	res.send('ok');
