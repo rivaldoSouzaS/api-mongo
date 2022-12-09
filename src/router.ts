@@ -11,6 +11,7 @@ import { listProductsByCategory } from './app/useCases/products/listProductsByCa
 import { createOrder } from './app/useCases/orders/createOrder';
 import { listOrders } from './app/useCases/orders/listOrders';
 import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus';
+import { cancelOrder } from './app/useCases/orders/cancelOrder';
 export const router = Router();
 
 const upload = multer({
@@ -42,6 +43,4 @@ router.post('/orders', createOrder);
 
 router.patch('/orders/:orderId', changeOrderStatus);
 
-router.delete('/orders/:orderId', (req, res) => {
-	res.send('ok');
-});
+router.delete('/orders/:orderId', cancelOrder);
